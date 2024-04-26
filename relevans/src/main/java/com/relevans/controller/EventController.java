@@ -29,6 +29,7 @@ public class EventController {
         LOGGER.log(Level.INFO,"[{0}]save response:{1}",new Object[]{session,dto});
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
+
     @PutMapping(consumes = "application/json;charset=UTF-8",produces = "application/json;charset=UTF-8")
     public ResponseEntity<EventDto> update(@RequestBody EventDto dto){
         String session= UUID.randomUUID().toString();
@@ -37,6 +38,7 @@ public class EventController {
         LOGGER.log(Level.INFO,"[{0}]save update:{1}",new Object[]{session,dto});
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
+
     @GetMapping(consumes = "application/json;charset=UTF-8",produces = "application/json;charset=UTF-8")
     public ResponseEntity<EventDto> findById(@RequestBody Integer id){
         String session= UUID.randomUUID().toString();
@@ -45,6 +47,7 @@ public class EventController {
         LOGGER.log(Level.INFO,"[{0}]save findById:{1}",new Object[]{session,dto});
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
+
     @GetMapping(path ="all",produces = "application/json;charset=UTF-8")
     public ResponseEntity<List<EventDto>> all(){
         String session= UUID.randomUUID().toString();
