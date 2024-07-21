@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class NotificationPushJob {
-    private final EventService eventService;
+    /*private final EventService eventService;
 
     @Autowired
     public NotificationPushJob(EventService eventService) {
@@ -40,7 +40,7 @@ public class NotificationPushJob {
         if(futureEvents.isEmpty()){
             System.out.println("No se encontraron eventos próximos.");
         }
-        sendNotificationToAllDevices("Prueba", "Prueba de notificación");
+        //sendNotificationToAllDevices("Prueba", "Prueba de notificación");
         // Itera sobre los eventos
         for (EventDto event : futureEvents) {
             // Compara la fecha del evento con la fecha y hora actual
@@ -66,5 +66,5 @@ public class NotificationPushJob {
                 .build();
 
         FirebaseMessaging.getInstance().sendAsync(message);
-    }
+    }*/
 }

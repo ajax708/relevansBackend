@@ -1,20 +1,23 @@
 package com.relevans.repo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
-
-
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
-@Entity
+@Entity(name = "evento")
 public class EventModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEvento;
     private String nombre;
-    private LocalDateTime fechaRegistro;
+    private LocalDateTime fecha;
+    private String descripcion;
     private String lastUser;
+    private String estado;
+
+    @ManyToMany(mappedBy = "eventos")
+    private Set<MinisterioModel> ministerios = new HashSet<>();
 }

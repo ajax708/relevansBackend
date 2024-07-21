@@ -4,6 +4,8 @@ import com.relevans.dto.EventDto;
 import com.relevans.dto.PlayListDto;
 import com.relevans.service.EventService;
 import com.relevans.service.PlayListService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +19,11 @@ import java.util.logging.Logger;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("api-relevans/event")
+
 public class EventController {
     private static final Logger LOGGER=Logger.getLogger(PlayListController.class.getName());
     private final EventService service;
+
 
     @PostMapping(consumes = "application/json;charset=UTF-8",produces = "application/json;charset=UTF-8")
     public ResponseEntity<EventDto> save(@RequestBody EventDto dto){
@@ -29,6 +33,7 @@ public class EventController {
         LOGGER.log(Level.INFO,"[{0}]save response:{1}",new Object[]{session,dto});
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
+
 
     @PutMapping(consumes = "application/json;charset=UTF-8",produces = "application/json;charset=UTF-8")
     public ResponseEntity<EventDto> update(@RequestBody EventDto dto){
