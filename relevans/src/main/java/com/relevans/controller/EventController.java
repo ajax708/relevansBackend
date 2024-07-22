@@ -1,11 +1,7 @@
 package com.relevans.controller;
 
 import com.relevans.dto.EventDto;
-import com.relevans.dto.PlayListDto;
 import com.relevans.service.EventService;
-import com.relevans.service.PlayListService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

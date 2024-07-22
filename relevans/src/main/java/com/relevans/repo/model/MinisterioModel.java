@@ -21,4 +21,7 @@ public class MinisterioModel {
             inverseJoinColumns = @JoinColumn(name = "idEvento")
     )
     private Set<EventModel> eventos = new HashSet<>();
+
+    @ManyToMany(mappedBy = "ministerios")
+    private Set<UserModel> users = new HashSet<>();
 }

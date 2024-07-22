@@ -10,7 +10,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-@Entity
+@Entity(name = "playlist")
 public class PlayListModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
