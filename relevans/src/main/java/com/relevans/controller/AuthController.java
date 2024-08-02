@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api-relevans/auth")
+@RequestMapping("auth")
 public class AuthController {
     private static final Logger LOGGER = Logger.getLogger(AuthController.class.getName());
     private final AuthenticationService authenticationService;

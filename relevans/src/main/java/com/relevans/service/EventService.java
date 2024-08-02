@@ -5,6 +5,8 @@ import com.google.firebase.messaging.FirebaseMessagingException;
 import com.google.firebase.messaging.Message;
 import com.google.firebase.messaging.Notification;
 import com.relevans.dto.EventDto;
+import com.relevans.job.CustomTrigger;
+import com.relevans.job.EventTask;
 import com.relevans.repo.IEvent;
 import com.relevans.repo.model.EventModel;
 import com.relevans.repo.model.MinisterioModel;
@@ -64,7 +66,18 @@ public class EventService {
         }
     }
 
-    // Programar una tarea para un evento
+    private void scheduleEventTask(EventModel eventModel) {
+        LocalDateTime eventDateTime = eventModel.getFecha();
+        Date eventDate = Date.from(eventDateTime.atZone(ZoneId.systemDefault()).toInstant());
+
+        EventTask eventTask = new EventTask(eventModel, notificationService, eventRepo);
+
+        taskScheduler.schedule(eventTask, new CustomTrigger(eventDate));
+
+        LOGGER.log(Level.INFO, "Scheduled task for event {0} at {1}", new Object[]{eventModel.getNombre(), eventDateTime});
+    }
+
+   /* // Programar una tarea para un evento
     private void scheduleEventTask(EventModel eventModel) {
         LocalDateTime eventDateTime = eventModel.getFecha();
         Date eventDate = Date.from(eventDateTime.atZone(ZoneId.systemDefault()).toInstant());
@@ -107,7 +120,7 @@ public class EventService {
         }, eventDate);
 
         LOGGER.log(Level.INFO, "Scheduled task for event {0} at {1}", new Object[]{eventModel.getNombre(), eventDateTime});
-    }
+    }*/
 
     @Transactional
     public EventDto update(String session, EventDto eventDto) {
